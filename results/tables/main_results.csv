@@ -1,0 +1,9 @@
+configuration,accuracy_pct,balanced_accuracy_pct,qwk,macro_auc
+DenseNet-121,61.7,67.0,0.8143,0.8816
+EfficientNetV2-S,60.5,65.0,0.8082,0.8741
+ResNet-50,58.1,63.4,0.7913,0.8638
+ConvNeXt-Tiny,57.4,60.2,0.7754,0.8543
+Uniform ensemble,64.7,66.1,0.8168,0.886
+HHO-Ensemble,66.1,67.3,0.8177,0.8871
+HHO-Ensemble+TTA,66.6,68.6,0.8279,0.8909
+SOTA (Vaattovaara et al. 2025),,69.3,0.820,0.886

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Data & checkpoints -- never commit these (root-level dataset dir only,
+# NOT src/data/ which holds the DataLoader source code)
+/data/
+*.pt
+*.pth
+*.npz
+*.npy
+*.ckpt
+weights/
+checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
