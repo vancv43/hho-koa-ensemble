@@ -54,7 +54,7 @@ def hho_feature_select(X: np.ndarray, y: np.ndarray, population: int = 15,
 
 def evaluate_selected_features(X: np.ndarray, y: np.ndarray, mask: np.ndarray, cv_folds: int = 5):
     """Train/evaluate an RBF-SVM on the HHO-selected feature subset
-    (manuscript Table 9)."""
+    (manuscript Table 12)."""
     clf = SVC(kernel="rbf")
     scores = cross_val_score(clf, X[:, mask], y, cv=cv_folds)
     return {"acc_mean": scores.mean(), "acc_std": scores.std(), "n_features": int(mask.sum())}

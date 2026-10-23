@@ -1,0 +1,18 @@
+hyperparameter,value
+dataset,OAI 8260 images KL 0-4
+random_seed,42 (data split and initialization)
+split_subject_level,5778 / 826 / 1656
+image_size,224x224
+oversampling_exponent,beta=0.7
+loss,60% CORN + 40% BSFL; gamma=2
+kl1_weight,4x inverse-frequency weight
+optimizer,AdamW
+head_lr,1e-4 default; 5e-5 ConvNeXt-Tiny
+backbone_lr,0.1 x head LR
+llrd,decay 0.65 over 6 groups (ConvNeXt-Tiny only)
+warmup,5 epochs (ConvNeXt-Tiny only)
+max_epochs,20 default; 30 ConvNeXt-Tiny
+early_stopping_patience,5 epochs
+ensemble_search,population 30; 80 iterations
+tta_variants,8 deterministic
+framework,PyTorch 2.1; timm; coral-pytorch

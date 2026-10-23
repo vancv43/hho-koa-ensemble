@@ -1,0 +1,147 @@
+
+Device: mps  |  Output: outputs
+  Saved latex_table1_related.tex
+  Saved latex_table2_architectures.tex
+  Saved latex_table3_metrics.tex
+  Saved fig02_dataset_samples.png
+  Saved fig03_dataset_distribution.png
+  [skip] DenseNet-121 → ckpt_DenseNet121.pth
+  [skip] EfficientNetV2-S → ckpt_EfficientNetV2S.pth
+  [skip] ResNet-50 → ckpt_ResNet50.pth
+  [retrain] deleted old ckpt_ConvNeXtTiny.pth
+
+==========================================================
+  Fine-tuning: ConvNeXt-Tiny
+==========================================================
+  [override] lr=5.0e-05  wd=0.05  warmup=5  epochs=30  drop=0.3  clip=0.5  llrd=0.65
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  LLRD groups: 6 (LRs: 5.0e-05, 5.0e-06, 3.3e-06, 2.1e-06, 1.4e-06, 8.9e-07)
+  Ep 01/30  train=0.2172  val=0.2603  lr=3.57e-07
+  Ep 02/30  train=0.2564  val=0.2906  lr=5.36e-07
+  Ep 03/30  train=0.3382  val=0.3402  lr=7.14e-07
+  Ep 04/30  train=0.4050  val=0.3862  lr=8.93e-07
+  Ep 05/30  train=0.4516  val=0.3753  lr=8.93e-07
+  Ep 06/30  train=0.4752  val=0.3692  lr=8.89e-07
+  Ep 07/30  train=0.5215  val=0.3705  lr=8.79e-07
+  Ep 08/30  train=0.5396  val=0.4504  lr=8.61e-07
+  Ep 09/30  train=0.5479  val=0.4782  lr=8.37e-07
+  Ep 10/30  train=0.5731  val=0.5024  lr=8.07e-07
+  Ep 11/30  train=0.5734  val=0.4818  lr=7.72e-07
+  Ep 12/30  train=0.5866  val=0.5387  lr=7.31e-07
+  Ep 13/30  train=0.5816  val=0.5484  lr=6.85e-07
+  Ep 14/30  train=0.5967  val=0.5230  lr=6.36e-07
+  Ep 15/30  train=0.5962  val=0.5254  lr=5.84e-07
+  Ep 16/30  train=0.6085  val=0.5291  lr=5.30e-07
+  Ep 17/30  train=0.5939  val=0.5545  lr=4.74e-07
+  Ep 18/30  train=0.6108  val=0.5375  lr=4.18e-07
+  Ep 19/30  train=0.6094  val=0.5605  lr=3.63e-07
+  Ep 20/30  train=0.6092  val=0.5545  lr=3.08e-07
+  Ep 21/30  train=0.6014  val=0.5533  lr=2.56e-07
+  Ep 22/30  train=0.6172  val=0.5702  lr=2.07e-07
+  Ep 23/30  train=0.6286  val=0.5751  lr=1.62e-07
+  Ep 24/30  train=0.6184  val=0.5436  lr=1.21e-07
+  Ep 25/30  train=0.6161  val=0.5448  lr=8.52e-08
+  Ep 26/30  train=0.6233  val=0.5569  lr=5.52e-08
+  Ep 27/30  train=0.6222  val=0.5521  lr=3.13e-08
+  Ep 28/30  train=0.6274  val=0.5751  lr=1.40e-08
+  Early stop (ep=28, patience=5)
+  Saved ckpt_ConvNeXtTiny.pth  (best_val=0.5751)
+  Saved fig09-fig12_training_*.png
+
+=======================================================
+  Stage 2: Collecting predictions
+=======================================================
+  DenseNet-121 …
+  EfficientNetV2-S …
+  ResNet-50 …
+  ConvNeXt-Tiny …
+
+=======================================================
+  Stage 3: Ensemble optimisation
+=======================================================
+
+  -- HHO --
+    HHO  10/80  QWK=0.7891
+    HHO  20/80  QWK=0.7896
+    HHO  30/80  QWK=0.7902
+    HHO  40/80  QWK=0.7902
+    HHO  50/80  QWK=0.7902
+    HHO  60/80  QWK=0.7902
+    HHO  70/80  QWK=0.7902
+    HHO  80/80  QWK=0.7902
+  Weights: {'DenseNet-121': '0.194', 'EfficientNetV2-S': '0.279', 'ResNet-50': '0.214', 'ConvNeXt-Tiny': '0.313'}
+
+  -- PSO --
+    PSO  10/80  QWK=0.7919
+    PSO  20/80  QWK=0.7922
+    PSO  30/80  QWK=0.7922
+    PSO  40/80  QWK=0.7922
+    PSO  50/80  QWK=0.7922
+    PSO  60/80  QWK=0.7922
+    PSO  70/80  QWK=0.7922
+    PSO  80/80  QWK=0.7922
+
+  -- GA --
+    GA   10/80  QWK=0.7908
+    GA   20/80  QWK=0.7908
+    GA   30/80  QWK=0.7908
+    GA   40/80  QWK=0.7908
+    GA   50/80  QWK=0.7908
+    GA   60/80  QWK=0.7908
+    GA   70/80  QWK=0.7908
+    GA   80/80  QWK=0.7908
+  Saved fig13_convergence_comparison.png
+  Saved latex_table6_convergence.tex
+
+=======================================================
+  Stage 4: Final evaluation
+=======================================================
+  DenseNet-121            Acc=61.71%  QWK=0.8143  F1=0.6656
+  EfficientNetV2-S        Acc=60.51%  QWK=0.8082  F1=0.6508
+  ResNet-50               Acc=58.09%  QWK=0.7913  F1=0.6309
+  ConvNeXt-Tiny           Acc=57.43%  QWK=0.7754  F1=0.6084
+  HHO-Ensemble            Acc=66.12%  QWK=0.8177  F1=0.6692
+
+=======================================================
+  Stage 5: Tables & figures
+=======================================================
+  Saved latex_table4_per_grade.tex
+  Saved latex_table5_qwk.tex
+  Saved latex_table7_sota.tex
+  Saved fig14_confusion_matrices.png
+  Saved fig15_roc_curves.png
+  Saved fig17_hho_weights.png
+  Saved fig18_performance_radar.png
+  Saved fig16_gradcam_DenseNet121.png
+  Saved fig16_gradcam_EfficientNetV2S.png
+  Saved fig16_gradcam_ResNet50.png
+  Saved fig16_gradcam_ConvNeXtTiny.png
+
+=======================================================
+  Clinical Data-2 Validation
+=======================================================
+  Target column: 'kl.grade'
+  Samples=160  Features=67
+  Grade dist: {2: np.int64(56), 3: np.int64(89), 4: np.int64(15)}
+  Fold 1: HHO+SVM Acc=0.469 F1=0.319 (20/67 feats) | Full Acc=0.469
+  Fold 2: HHO+SVM Acc=0.312 F1=0.255 (3/67 feats) | Full Acc=0.531
+  Fold 3: HHO+SVM Acc=0.500 F1=0.500 (27/67 feats) | Full Acc=0.500
+  Fold 4: HHO+SVM Acc=0.281 F1=0.225 (5/67 feats) | Full Acc=0.562
+  Fold 5: HHO+SVM Acc=0.531 F1=0.397 (7/67 feats) | Full Acc=0.562
+  Saved latex_table8_clinical.tex
+
+============================================================
+  FINAL — HHO-Ensemble on OAI Test Set
+============================================================
+  Accuracy (%)          : 66.12
+  Balanced Acc (%)      : 67.25
+  Macro-Precision       : 0.6713
+  Macro-Recall          : 0.6725
+  Macro-F1              : 0.6692
+  Macro-AUC             : 0.8871
+  QWK                   : 0.8177
+  MAE                   : 0.4022
+  MSE                   : 0.5302
+============================================================
+
+  9 LaTeX tables + 18 PNG figures → outputs

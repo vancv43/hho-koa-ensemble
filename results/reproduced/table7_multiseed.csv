@@ -1,0 +1,5 @@
+optimizer,val_qwk_mean,val_qwk_sd,test_qwk_mean,test_qwk_sd,median_iter,iter_q1,iter_q3
+HHO,0.7879,0.0009,0.8279,0.0012,1,0,1
+PSO,0.7875,0.0008,0.8278,0.0011,0,0,0
+GA,0.7877,0.0006,0.8282,0.0011,0,0,10
+# Wilcoxon on per-seed val QWK: HHO vs PSO p=0.0028, HHO vs GA p=0.28

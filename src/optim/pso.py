@@ -1,6 +1,6 @@
 """
 Particle Swarm Optimization baseline for ensemble weight search
-(manuscript Section 4.4, Table 6 comparison).
+(manuscript Sections 4.3-4.4, Tables 6-7).
 
 Kennedy, J., & Eberhart, R. (1995). Particle swarm optimization.
 Proceedings of ICNN'95, 4, 1942-1948.

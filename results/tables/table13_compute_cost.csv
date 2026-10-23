@@ -1,0 +1,9 @@
+stage,cost
+Phase 1 DenseNet-121,~42 min
+Phase 1 EfficientNetV2-S,~68 min
+Phase 1 ResNet-50,~55 min
+Phase 1 ConvNeXt-Tiny,~175 min
+Phase 1 total,~5.8 h
+Phase 2 HHO optimization,0.85 s
+Inference standard (no TTA),~12 ms/image
+Inference with TTA (A=8),~96 ms/image

@@ -1,16 +1,16 @@
 """
 Harris Hawks Optimization for ensemble soft-voting weight search.
-Manuscript Algorithm 1 / Section 3.5, Eq. (6).
+Manuscript Algorithm 1 / Section 3.5, Eq. 7.
 
 Heidari, A. A., Mirjalili, S., Faris, H., Aljarah, I., Mafarja, M., &
 Chen, H. (2019). Harris hawks optimization: Algorithm and applications.
 Future Generation Computer Systems, 97, 849-872.
 
-Note: this reference implementation covers exploration and soft-besiege
-exploitation. The full paper run additionally used hard-besiege and
-Levy-flight dive variants within the exploitation branch; those are
-omitted here for brevity and do not change the algorithm's asymptotic
-behaviour on this 4-dimensional weight simplex.
+As stated in the manuscript (Section 3.5), this variant uses exploration
+plus soft-besiege exploitation only; the hard-besiege and Levy-flight
+branches of canonical HHO are omitted. Hawks are drawn i.i.d. from
+U(0,1)^4 and mapped onto the simplex by softmax; E0 ~ U(-1,1) is redrawn
+for every hawk at every iteration; all T iterations always run.
 """
 import numpy as np
 
@@ -28,7 +28,7 @@ def hho_optimize(fitness_fn, dim: int, population: int = 30, iterations: int = 8
     fitness_fn: callable(np.ndarray of shape (dim,)) -> float (e.g. validation QWK)
     Returns: (best_weights, best_fitness, history) where history is the
     best-fitness-per-iteration trace used for the convergence comparison
-    (manuscript Table 6 / Figure "convergence").
+    (manuscript Tables 6-7, Figure 4).
     """
     rng = np.random.default_rng(seed)
     hawks = rng.uniform(0, 1, size=(population, dim))

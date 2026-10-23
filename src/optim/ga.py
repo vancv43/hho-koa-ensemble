@@ -1,6 +1,6 @@
 """
 Genetic Algorithm baseline for ensemble weight search
-(manuscript Section 4.4, Table 6 comparison).
+(manuscript Sections 4.3-4.4, Tables 6-7).
 
 Holland, J. H. (1992). Genetic algorithms. Scientific American, 267(1), 66-72.
 """

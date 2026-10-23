@@ -1,6 +1,6 @@
 """
 Phase 1: fine-tune one backbone with the combined CORN+BSFL loss.
-LLRD (manuscript Eq. 8) is applied when --backbone convnext_tiny.
+LLRD (manuscript Eq. 6) and a 5-epoch linear warm-up is applied when --backbone convnext_tiny.
 
 Usage:
     python train.py --backbone densenet121 --data-root /path/to/oai
@@ -10,7 +10,7 @@ import argparse
 
 import torch
 from torch.optim import AdamW
-from torch.optim.lr_scheduler import CosineAnnealingLR
+from torch.optim.lr_scheduler import CosineAnnealingLR, LinearLR, SequentialLR
 
 import config
 from src.data import build_dataloader
@@ -20,16 +20,20 @@ from src.models import build_backbone, corn_predict
 
 
 def build_llrd_param_groups(model, head_lr: float, decay: float, num_groups: int):
-    """Layer-wise learning-rate decay across `num_groups` backbone parameter
-    groups plus the CORN head (manuscript Section 3.4)."""
+    """Layer-wise learning-rate decay (manuscript Section 3.4, Eq. 6): the CORN
+    head plus `num_groups - 1` backbone groups. The backbone group nearest the
+    head gets 0.1 x head_lr and each earlier group is scaled by `decay`, giving
+    5e-5, 5e-6, 3.3e-6, 2.1e-6, 1.4e-6, 8.9e-7 for head_lr = 5e-5
+    (see logs/01_phase1_training_and_clinical_log.txt)."""
     named_params = list(model.backbone.named_parameters())
-    chunk = max(1, len(named_params) // num_groups)
+    num_backbone = num_groups - 1
+    chunk = -(-len(named_params) // num_backbone)
+    top_lr = head_lr * config.BACKBONE_LR_RATIO
     groups = []
-    for g in range(num_groups):
+    for g in range(num_backbone):
         params = [p for _, p in named_params[g * chunk:(g + 1) * chunk]]
-        lr = head_lr * (decay ** (num_groups - g))
         if params:
-            groups.append({"params": params, "lr": lr})
+            groups.append({"params": params, "lr": top_lr * decay ** (num_backbone - 1 - g)})
     groups.append({"params": model.head.parameters(), "lr": head_lr})
     return groups
 
@@ -51,7 +55,14 @@ def train_one_backbone(backbone_name: str, data_root: str, device: str = "cpu"):
             {"params": model.head.parameters(), "lr": head_lr},
         ]
     optimizer = AdamW(param_groups, weight_decay=weight_decay)
-    scheduler = CosineAnnealingLR(optimizer, T_max=max_epochs)
+    if is_convnext:
+        warmup = config.CONVNEXT_WARMUP_EPOCHS
+        scheduler = SequentialLR(optimizer, [
+            LinearLR(optimizer, start_factor=1.0 / warmup, total_iters=warmup),
+            CosineAnnealingLR(optimizer, T_max=max_epochs - warmup),
+        ], milestones=[warmup])
+    else:
+        scheduler = CosineAnnealingLR(optimizer, T_max=max_epochs)
 
     train_loader = build_dataloader(f"{data_root}/train", config.IMAGE_SIZE, train=True,
                                      oversample_beta=config.OVERSAMPLE_BETA)

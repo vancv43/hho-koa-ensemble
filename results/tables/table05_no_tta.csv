@@ -1,0 +1,7 @@
+model,qwk,mae,auc,accuracy_pct
+DenseNet-121,0.8143,0.423,0.8816,61.7
+EfficientNetV2-S,0.8082,0.436,0.8741,60.5
+ResNet-50,0.7913,0.465,0.8638,58.1
+ConvNeXt-Tiny,0.7754,0.484,0.8543,57.4
+Uniform ensemble,0.8168,0.409,0.886,64.7
+HHO-Ensemble,0.8177,0.402,0.8871,66.1

@@ -1,7 +1,7 @@
 """
 Test-set evaluation: full metrics (QWK, BalAcc, Acc, macro-AUC) plus the
 paired bootstrap significance test for the HHO-vs-uniform ensemble gain
-(manuscript Section 4.7, Table 7).
+(manuscript Section 4.6, Table 9).
 
 Usage:
     python evaluate.py --probs-dir ./cached_test_probs --labels test_labels.npy --weights 0.307 0.231 0.238 0.224

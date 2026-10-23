@@ -1,4 +1,4 @@
-optimizer,best_val_qwk,converge_iter,time_seconds
+optimizer,best_val_qwk,converge_iter,time_s
 HHO,0.7884,1,0.85
 PSO,0.7892,7,0.81
 GA,0.7892,15,1.57

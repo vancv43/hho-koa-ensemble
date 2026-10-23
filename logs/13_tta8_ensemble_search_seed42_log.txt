@@ -1,0 +1,57 @@
+Device: mps
+Val: 826  Test: 1656
+
+TTA-8 inference: DenseNet-121 ...
+  DenseNet-121           test QWK(TTA-8)=0.8149
+
+TTA-8 inference: EfficientNetV2-S ...
+  EfficientNetV2-S       test QWK(TTA-8)=0.8199
+
+TTA-8 inference: ResNet-50 ...
+  ResNet-50              test QWK(TTA-8)=0.7936
+
+TTA-8 inference: ConvNeXt-Tiny ...
+  ConvNeXt-Tiny          test QWK(TTA-8)=0.7739
+Cached TTA-8 probs -> data/tta8_probs.npz
+
+============================================================
+Ensemble weight search: pop=30 iter=80 seed=42 (paper spec)
+============================================================
+
+-- HHO --
+    HHO  10/80  QWK=0.7884
+    HHO  20/80  QWK=0.7884
+    HHO  30/80  QWK=0.7884
+    HHO  40/80  QWK=0.7884
+    HHO  50/80  QWK=0.7884
+    HHO  60/80  QWK=0.7884
+    HHO  70/80  QWK=0.7884
+    HHO  80/80  QWK=0.7884
+  val_QWK=0.7884  converge_iter=1  time=0.85s  weights={'DenseNet-121': 0.3071, 'EfficientNetV2-S': 0.2307, 'ResNet-50': 0.2377, 'ConvNeXt-Tiny': 0.2244}
+  TEST: QWK=0.8279  BalAcc=0.6857  Acc=66.61%  AUC=0.8909
+
+-- PSO --
+    PSO  10/80  QWK=0.7892
+    PSO  20/80  QWK=0.7892
+    PSO  30/80  QWK=0.7892
+    PSO  40/80  QWK=0.7892
+    PSO  50/80  QWK=0.7892
+    PSO  60/80  QWK=0.7892
+    PSO  70/80  QWK=0.7892
+    PSO  80/80  QWK=0.7892
+  val_QWK=0.7892  converge_iter=7  time=0.81s  weights={'DenseNet-121': 0.3471, 'EfficientNetV2-S': 0.2319, 'ResNet-50': 0.1893, 'ConvNeXt-Tiny': 0.2318}
+  TEST: QWK=0.8293  BalAcc=0.6836  Acc=66.36%  AUC=0.8910
+
+-- GA --
+    GA   10/80  QWK=0.7889
+    GA   20/80  QWK=0.7892
+    GA   30/80  QWK=0.7892
+    GA   40/80  QWK=0.7892
+    GA   50/80  QWK=0.7892
+    GA   60/80  QWK=0.7892
+    GA   70/80  QWK=0.7892
+    GA   80/80  QWK=0.7892
+  val_QWK=0.7892  converge_iter=15  time=1.57s  weights={'DenseNet-121': 0.35, 'EfficientNetV2-S': 0.2337, 'ResNet-50': 0.183, 'ConvNeXt-Tiny': 0.2334}
+  TEST: QWK=0.8294  BalAcc=0.6820  Acc=66.24%  AUC=0.8910
+
+Saved -> results/seed42_search.json

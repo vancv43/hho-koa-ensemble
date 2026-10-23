@@ -1,0 +1,23 @@
+{
+  "dataset_root": "${KOA_DATA_ROOT}",
+  "clinical_xlsx": "<confidential, not released>",
+  "output_dir": "outputs_v2",
+  "image_size": 224,
+  "seed": 42,
+  "epochs": 20,
+  "batch_size": 32,
+  "lr": 0.0001,
+  "backbone_lr_mult": 0.1,
+  "weight_decay": 0.0001,
+  "patience": 5,
+  "warmup_epochs": 2,
+  "num_workers": 0,
+  "hho_population": 30,
+  "hho_iterations": 80,
+  "hho_clin_population": 15,
+  "hho_clin_iterations": 30,
+  "skip_train": true,
+  "skip_clinical": false,
+  "skip_ablation": true,
+  "device": "auto"
+}

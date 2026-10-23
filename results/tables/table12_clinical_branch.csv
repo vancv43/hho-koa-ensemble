@@ -1,0 +1,3 @@
+method,accuracy_mean,accuracy_sd,f1_mean,f1_sd,features
+HHO + SVM,0.419,0.102,0.339,0.100,12/67
+Full-feature SVM,0.525,0.036,0.364,0.023,67/67

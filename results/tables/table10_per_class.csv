@@ -1,0 +1,7 @@
+class,recall_no_tta,precision_no_tta,f1_no_tta,recall_tta,precision_tta,f1_tta
+KL0 Normal,0.83,0.72,0.77,0.83,0.74,0.78
+KL1 Doubtful,0.32,0.33,0.33,0.33,0.33,0.33
+KL2 Mild,0.54,0.69,0.61,0.54,0.69,0.60
+KL3 Moderate,0.83,0.78,0.81,0.84,0.78,0.81
+KL4 Severe,0.84,0.83,0.83,0.88,0.85,0.87
+Macro avg,0.67,0.67,0.67,0.69,0.68,0.68

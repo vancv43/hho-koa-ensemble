@@ -1,6 +1,7 @@
 """
 Phase 2: search the soft-voting weight simplex on validation QWK using
-HHO (benchmarked against PSO and GA). Manuscript Section 3.5, Table 6.
+HHO (benchmarked against PSO and GA). Manuscript Section 3.5, Tables 6-7.
+converge_iter = first iteration whose best-so-far fitness reaches 0.999 x final best.
 
 Usage:
     python ensemble_optimize.py --probs-dir ./cached_val_probs --labels val_labels.npy

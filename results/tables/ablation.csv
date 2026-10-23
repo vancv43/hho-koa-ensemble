@@ -1,7 +1,0 @@
-configuration,qwk,balanced_accuracy_pct
-Full pipeline (HHO+TTA),0.8279,68.6
-- TTA (HHO, no TTA),0.8177,67.3
-- HHO (uniform weights),0.8168,66.1
-- LLRD on ConvNeXt-Tiny,0.8094,65.8
-- BSFL (lambda_f=0),0.8065,63.2
-- CORN (CE loss only),0.8053,62.9
